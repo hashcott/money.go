@@ -1,7 +1,5 @@
 package moneygo
 
-import "errors"
-
 func NewExchanger(base CurrencyCode, rates Rates) *MoneyGo {
 	return &MoneyGo{
 		base:  base,
@@ -16,7 +14,7 @@ func (fx *MoneyGo) getRate(fromTo FromTo) (float64, error) {
 
 	// Throw an error if either rate isn't in the rates array
 	if fx.rates[fromTo.To] == 0 || fx.rates[fromTo.From] == 0 {
-		return 0, errors.New("fx error")
+		return 0, ErrorCurrencyCode
 	}
 
 	// If `from` currency === fx.base, return the basic exchange rate for the `to` currency
@@ -38,13 +36,13 @@ func (fx *MoneyGo) Convert(val float64) (float64, error) {
 
 	// We need to know the `from` and `to` currencies
 	if fx.DefaultSettings.From == "" || fx.DefaultSettings.To == "" {
-		return 0, errors.New("please set up default settings")
+		return 0, ErrorConfig
 	}
 
 	// Multiply the value by the exchange rate
 	rate, err := fx.getRate(fx.DefaultSettings)
 	if err != nil {
-		return 0, errors.New("fx error")
+		return 0, err
 	}
 
 	return rate * val, nil
@@ -53,13 +51,13 @@ func (fx *MoneyGo) Convert(val float64) (float64, error) {
 func (fx *MoneyGo) ConvertWithFromTo(val float64, fromTo FromTo) (float64, error) {
 	// We need to know the `from` and `to` currencies
 	if fromTo.From == "" || fromTo.To == "" {
-		return 0, errors.New("please set up default settings")
+		return 0, ErrorConfig
 	}
 
 	// Multiply the value by the exchange rate
 	rate, err := fx.getRate(fromTo)
 	if err != nil {
-		return 0, errors.New("fx error")
+		return 0, ErrorUnknown
 	}
 
 	return rate * val, nil
