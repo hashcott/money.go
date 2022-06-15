@@ -2,6 +2,12 @@
 
 ### Simple JavaScript currency conversion library with no dependencies.
 
+
+#### Install
+```go
+go get -u github.com/hashcott/money.go
+```
+
 You'll need to do one more thing before you can use it, which is:
 
 #### Setting up exchange rates with rates
