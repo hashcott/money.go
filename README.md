@@ -1,3 +1,5 @@
+# Money. <img src="https://go.dev/blog/go-brand/Go-Logo/SVG/Go-Logo_Aqua.svg" alt="go" width="56"/>
+
 You'll need to do one more thing before you can use it, which is:
 
 #### Setting up exchange rates with fx.rates
