@@ -2,7 +2,7 @@
 
 You'll need to do one more thing before you can use it, which is:
 
-#### Setting up exchange rates with fx.rates
+#### Setting up exchange rates with rates
 To use money.go to convert currencies, you'll need to feed it with some exchange rate data and provide a base currency. (As long as you have exchange rates for every currency relative to one single other ('base') currency, money.go can convert between any other two)
 
 The library doesn't specify a format for currency names/codes (we recommend sticking to the standard three-letter codes). It also does not mind how accurate they are, or which currency is your base rate.
