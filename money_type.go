@@ -11,4 +11,5 @@ type MoneyGo struct {
 	Base            CurrencyCode `json:"base"`
 	Rates           Rates        `json:"rates"`
 	DefaultSettings FromTo       `json:"defaultSettings"`
+	MoneyInterface
 }
