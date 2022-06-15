@@ -8,7 +8,7 @@ type FromTo struct {
 type Rates map[CurrencyCode]float64
 
 type MoneyGo struct {
-	Base            CurrencyCode `json:"base"`
-	Rates           Rates        `json:"rates"`
+	base            CurrencyCode `json:"base"`
+	rates           Rates        `json:"rates"`
 	DefaultSettings FromTo       `json:"defaultSettings"`
 }
