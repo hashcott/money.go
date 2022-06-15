@@ -7,8 +7,10 @@ The library doesn't specify a format for currency names/codes (we recommend stic
 
 They should like this:
 
+#### NewExchanger(base CurrencyCode, rates Rates)
+
 ```go
-package moneygo_test
+package main
 
 import (
 	moneygo "github.com/hashcott/money.go"
@@ -20,7 +22,7 @@ func main()  {
 }
 ```
 
-#### Convert 
+#### .Convert(val float64) 
 The basic function of the library - converts a value from one currency to another. Uses the default from and to currencies in fx.DefaultSettings:
 
 ```go
@@ -28,17 +30,7 @@ The basic function of the library - converts a value from one currency to anothe
 	val, err := fx.Convert(1000); // convert from USD to GBP
 ```
 
-
-#### Convert
-The basic function of the library - converts a value from one currency to another. Uses the default from and to currencies in fx.DefaultSettings:
-
-```go
-        // using default
-        fx.DefaultSettings = moneygo.FromTo{From: moneygo.USD, To: moneygo.GBP}
-	val, err := fx.Convert(1000); // convert from USD to GBP
-```
-
-#### ConvertWithFromTo
+#### .ConvertWithFromTo(val float64, fromTo FromTo)
 
 ```go
         fx.ConvertWithFromTo(1000, moneygo.FromTo{From: moneygo.USD, To: moneygo.GBP})
